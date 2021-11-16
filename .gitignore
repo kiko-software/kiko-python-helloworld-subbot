@@ -1,0 +1,20 @@
+# Logs
+logs
+
+# keys
+keys
+secrets
+
+# local
+INSTALLATION-LOCAL.md
+
+.config
+
+
+### System Files ###
+.DS_Store
+.bash_history
+
+
+# local env
+env
