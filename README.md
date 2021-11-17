@@ -118,8 +118,7 @@ docker run -it -ePORT=5000 -p8080:5000 kiko-python-helloworld-subbot
 Check it out: http://0.0.0.0:8080/
 
 ## Deploy and Run on GCP
-
-Set an environment variable with your GCP Project ID
+If the Test Drive was error-free, the service can be made live.
 ```
 gcloud run deploy kiko-python-helloworld-subbot --source .
 ```
