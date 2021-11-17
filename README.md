@@ -14,11 +14,30 @@ The web service can be hosted at e.g. Google Cloud Run.
 ## Look at the code
 The processing of the request from the Kiko server takes place in the file main.py.
 
-The response content is in this example is a simple "Hello World" text.
+The service can request the value of a desired parameter from the user. 
 
-To answer the intent, a server request is sent to Kiko.
+The parameter name and the corresponding question to the user are configured in the metadata of the intent.
+
+```
+{
+  "parameters": [
+    {
+      "name": "user_name", 
+      "question": "Wie ist Ihr Name?"
+    }
+  ]
+}
+```
+
+If the service recognises this configuration during a request from an intent, the question is output to the user. 
+The application remembers in the session (conversations) which parameter was queried last. 
+The next user input can then be interpreted as an answer to this question.
+The response content is in this example a simple text - "Hello " + user name.
+
+To output something to the user, a server request is sent to Kiko.
 The destination address is determined from the callback-domain url parameter of the subbot request.
 To ensure that the answer appears in the correct chat with the requesting user, the ConversationId from the request must be used in the answer.
+
 The last message item is an event that ends the conversation with the subbot.
 
 ## Setup Local Python Environment
@@ -36,6 +55,7 @@ env/bin/pip install -r requirements.txt
 Activate the virtual environment, if necessary
 ```
 source env/bin/activate
+export FLASK_ENV=development
 ```
 
 Run
