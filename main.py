@@ -10,7 +10,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
 import requests
 import json
 from flask import Flask, request, abort
@@ -24,10 +23,15 @@ def health():
 
 @app.route("/api/v1/messages", methods = ['POST'])
 def helloworld_subbot():
+
+    response_text_content = "Hello World"
+
+    # i.e. "cloud02-7c83ec0.prod.1000grad.de" - this value is to be added to the webhook-url as a parameter
     kiko_instance_domain = request.args.get('callback-domain')
     if kiko_instance_domain is None:
         abort(400, description = "callback-domain not found")    
 
+    # the source of this value is a webhook - https://cloud02-7c83ec0.prod.1000grad.de/api/docs/#/webhooks?id=message_sent
     conversation_id = request.get_json().get('conversationId')
     if conversation_id is None:
         abort(400, description = "conversationId not found")
@@ -41,7 +45,7 @@ def helloworld_subbot():
                 "type": "message",
                 "data": {
                     "type": "text/plain",
-                    "content": "Hello World"
+                    "content": response_text_content
                 }
             },
             {
@@ -67,6 +71,3 @@ def handle_exception(e):
     })
     response.content_type = "application/json"
     return response
-
-if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
