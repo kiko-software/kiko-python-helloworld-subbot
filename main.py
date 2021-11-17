@@ -18,6 +18,10 @@ from werkzeug.exceptions import HTTPException
 
 app = Flask(__name__)
 
+@app.route("/", methods = ['GET'])
+def health():
+  return "ping"
+
 @app.route("/api/v1/messages", methods = ['POST'])
 def helloworld_subbot():
     kiko_instance_domain = request.args.get('callback-domain')
