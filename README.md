@@ -104,3 +104,9 @@ Set an environment variable with your GCP Project ID
 gcloud run deploy kiko-python-helloworld-subbot --source .
 ```
 Check out the ping health message: https://kiko-python-helloworld-subbot-.....a.run.app
+
+## Deploy With the Button
+
+[run_img]: https://storage.googleapis.com/cloudrun/button.svg
+[run_link]: https://console.cloud.google.com/cloudshell/editor?shellonly=true&cloudshell_image=gcr.io/cloudrun/button&cloudshell_git_repo=https://github.com/kiko-software/kiko-python-helloworld-subbot&cloudshell_working_dir=run
+
