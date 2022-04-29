@@ -68,7 +68,7 @@ def api_v1_messages_post():
     conversation = upsert_conversation_data(
         kiko_instance_identifier, conversation_id, metadata)
     if conversation is None:
-        abort(400, description="Missing conversation item")
+        abort(400, description = "Missing conversation item")
 
     is_first_request = False
     if metadata is not None:
